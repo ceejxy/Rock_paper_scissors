@@ -22,3 +22,25 @@ function getComputerChoice() {
 }
 
 getComputerChoice();
+
+// create a function named getHumanChoice
+// human's choice depends on their input
+// prompt the human to input one of the three choices
+// if their input is Rock, Paper, or Scissors
+// change the users input to all lowercase using toLowerCase method for consistency
+// return the human's choice with the first letter capitalized only
+// else alert the human that their answer is invalid
+// alert human that their answer is not valid
+
+
+function getHumanChoice() {
+    let humanChoice = prompt('Choose your fighter').toLowerCase();
+
+    if (humanChoice.toLowerCase() == 'rock' || humanChoice.toLowerCase() == 'paper' || humanChoice.toLowerCase() == 'scissors') {
+        console.log(humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1));
+    } else {
+        console.log('That is not an option!');
+    }
+}
+
+console.log(getHumanChoice())
