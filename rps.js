@@ -10,18 +10,22 @@
 let randomNumber = Math.floor(Math.random()* 3) + 1
 
 function getComputerChoice() {
-    let computerChoice = Number(randomNumber);
+    let computerWeapon = Number(randomNumber);
    
-    if(computerChoice === 1) {
-        console.log('Rock');
-    } else if (computerChoice === 2) {
-        console.log('Paper');
+    if(computerWeapon === 1) {
+        computerWeapon = 'Rock'
+        console.log('Computer selects:', computerWeapon);
+    } else if (computerWeapon === 2) {
+        computerWeapon = 'Paper';
+        console.log('Computer selects:', computerWeapon);
     } else {
-        console.log('Scissors');
+        computerWeapon = 'Scissors'
+        console.log('Computer selects:', computerWeapon);
     }
 }
 
 getComputerChoice();
+
 
 // create a function named getHumanChoice
 // human's choice depends on their input
@@ -34,13 +38,28 @@ getComputerChoice();
 
 
 function getHumanChoice() {
-    let humanChoice = prompt('Choose your fighter').toLowerCase();
+    let humanWeapon;
 
-    if (humanChoice.toLowerCase() == 'rock' || humanChoice.toLowerCase() == 'paper' || humanChoice.toLowerCase() == 'scissors') {
-        console.log(humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1));
-    } else {
-        console.log('That is not an option!');
+    while (true) {
+        humanWeapon = prompt('Choose your fighter').toLowerCase();
+        
+        if (humanWeapon.toLowerCase() == 'rock' || humanWeapon.toLowerCase() == 'paper' || humanWeapon.toLowerCase() == 'scissors') {
+            let answer = humanWeapon.charAt(0).toUpperCase() + humanWeapon.slice(1);
+            console.log('Human selects:', answer);
+            break;
+        }
+        console.log('That is NOT an option!');
     }
 }
 
-console.log(getHumanChoice())
+     
+getHumanChoice();
+
+
+// create variable to keep track of human score
+// create variable to keep track of computer score
+// initialize both to 0
+// create a function that will take the humans choice and computers choice as arguments
+// define two parameters -> humanChoice and computerChoice
+// set const variable for human selection = getHumanChoice()
+// set const variable for computer choice = getComputerChoice()
