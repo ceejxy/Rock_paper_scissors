@@ -13,16 +13,18 @@ function getComputerChoice() {
     let computerWeapon = Number(randomNumber);
    
     if(computerWeapon === 1) {
-        return 'Rock';
-        //console.log(computerWeapon);
+        computerWeapon = 'Rock';
+        return computerWeapon 
     } else if (computerWeapon === 2) {
-        return 'Paper';
-        //console.log(computerWeapon);
+        computerWeapon = 'Paper';
+        return computerWeapon
     } else {
-        return 'Scissors';
-        //console.log(computerWeapon);
+        computerWeapon = 'Scissors';
+        return computerWeapon;
     }
 }
+
+
 
 
 // create a function named getHumanChoice
@@ -36,19 +38,24 @@ function getComputerChoice() {
 
 
 function getHumanChoice() {
-    let humanWeapon;
 
     while (true) {
         humanWeapon = prompt('Choose your fighter').toLowerCase();
         
-        if (humanWeapon.toLowerCase() == 'rock' || humanWeapon.toLowerCase() == 'paper' || humanWeapon.toLowerCase() == 'scissors') {
-            let answer = humanWeapon.charAt(0).toUpperCase() + humanWeapon.slice(1);
-            return answer
-            break;
-        }
-        return 'That is NOT an option!';
+        if (humanWeapon === 'rock' || humanWeapon === 'paper' || humanWeapon === 'scissors') {
+            humanWeapon = humanWeapon.charAt(0).toUpperCase() + humanWeapon.slice(1);
+            return humanWeapon;
+        } else {
+        alert('That is NOT an option!');
     }
 }
+}
+
+
+
+//console.log(getHumanChoice());
+
+
 
 // create variable to keep track of human score
 // create variable to keep track of computer score
@@ -58,43 +65,64 @@ function getHumanChoice() {
 // set const variable for human selection = getHumanChoice()
 // set const variable for computer choice = getComputerChoice()
 
-function playRound(humanChoice, computerChoice) {
-    let computerScore = 0;
-    let humanScore = 0;
 
-    console.log(getComputerChoice());
+
+
+
+
+let computerSelection = getComputerChoice();
+
+
+
+
+//console.log(playRound(humanSelection, computerSelection));
+
+newHumanValue = '';
+newCompValue = '';
+
+function playGame() {
+
     
-    if (humanChoice === 'Rock' && computerChoice === 'Paper') {
-        computerScore++;
-        console.log('Computer wins!');
-        console.log('Computer score is:', computerScore);
-    } else if (humanChoice === 'Paper' && computerChoice === 'Scissors') {
-        computerScore++;
-        console.log('Computer wins!');
-        console.log('Computer score is:', computerScore);
-    } else if (humanChoice === 'Scissors' && computerChoice === 'Rock') {
-        computerScore++;
-        console.log('Computer wins!');
-        console.log('Computer score is:', computerScore);
-    } else if (humanChoice === 'Paper' && computerChoice === 'Rock') {
-        humanScore++;
-        console.log('Human wins!');
-        console.log('Human score is:', humanScore);
-    } else if (humanChoice === 'Scissors' && computerChoice === 'Paper') {
-        humanScore++;
-        console.log('Human wins!');
-        console.log('Human score is:', humanScore);
-    } else if (humanChoice === 'Rock' && computerChoice === 'Scissors') {
-        humanScore++;
-        console.log('Human wins!');
-        console.log('Human score is:', humanScore);
-    } else {
-        console.log('DRAW!')
-    }
+    function playRound(humanChoice, computerChoice) {
+
+        let compScore = 0;
+        let humanScore = 0;
+        
+        console.log(humanSelection);
+        console.log(computerSelection);
+
+        if (humanChoice === 'Rock' && computerChoice === 'Paper') {
+            compScore++;
+            return 'Computer wins!';
+        }  else if (humanChoice === 'Paper' && computerChoice === 'Scissors') {
+            computerScore++;
+            return 'Computer wins!';
+        } else if (humanChoice === 'Scissors' && computerChoice === 'Rock') {
+            computerScore++;
+            return 'Computer wins!';
+        } else if (humanChoice === 'Paper' && computerChoice === 'Rock') {
+            humanScore++;
+            return 'Human wins!';
+        } else if (humanChoice === 'Scissors' && computerChoice === 'Paper') {
+            humanScore++;
+            return 'Human wins!';
+        } else if (humanChoice === 'Rock' && computerChoice === 'Scissors') {
+            humanScore++;
+            return 'Human wins!';
+        } else {
+            return 'DRAW!'
+        }
+    }      
 }
 
+let humanScore = parseInt(0);
+let compScore = parseInt(0);
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-console.log(playRound(humanSelection, computerSelection));
+for (let i = 0; i <= 5 ; i++) {
+    let humanChoice = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    console.log(playRound(humanChoice, computerSelection));
+    console.log('your score = ' + humanScore);
+    console.log("computer's score is " + compScore);
+    i++;
+}
