@@ -26,6 +26,8 @@ function getComputerChoice() {
 
 } 
 
+console.log(getComputerChoice())
+
 
 
 // create a function named getHumanChoice
@@ -38,7 +40,7 @@ function getComputerChoice() {
 // alert human that their answer is not valid
 
 
-function getHumanChoice() {
+ /* function getHumanChoice() {
 
     while (true) {
         humanWeapon = prompt('Choose your fighter').toLowerCase();
@@ -50,11 +52,8 @@ function getHumanChoice() {
         alert('That is NOT an option!');
     }
 }
-}
+} */
 
-
-
-//console.log(getHumanChoice());
 
 
 
@@ -68,40 +67,69 @@ function getHumanChoice() {
 
 
 
-//console.log(playRound(humanSelection, computerSelection));
+//console.log(playRound(humanSelection, computerSelection)); */
 
 
 
-function playRound(humanChoice, computerChoice) {
+let humanChoice = ''
 
+function humanSelection(event) {
 
-    if (humanChoice === 'Rock' && computerChoice === 'Paper') {
-        compScore++;
-        return 'Computer wins!';
-    }  else if (humanChoice === 'Paper' && computerChoice === 'Scissors') {
-        compScore++;
-        return 'Computer wins!';
-    } else if (humanChoice === 'Scissors' && computerChoice === 'Rock') {
-        compScore++;
-        return 'Computer wins!';
-    } else if (humanChoice === 'Paper' && computerChoice === 'Rock') {
-        humanScore++;
-        return 'Human wins!';
-    } else if (humanChoice === 'Scissors' && computerChoice === 'Paper') {
-        humanScore++;
-        return 'Human wins!';
-    } else if (humanChoice === 'Rock' && computerChoice === 'Scissors') {
-        humanScore++;
-        return 'Human wins!';
+    
+    if (event.target.id === 'rockButton') {
+        humanChoice = 'Rock';
+        console.log(humanChoice);
+    } else if (event.target.id === 'paperButton') {
+        humanChoice = 'Paper';
+        console.log(humanChoice);
     } else {
-        return 'DRAW!'
+        humanChoice = 'Scissors';
+        console.log(humanChoice);
     }
+}
 
-}      
+const rockButton = document.getElementById('rockButton');
+const paperButton = document.getElementById('paperButton');
+const scissorsButton = document.getElementById('scissorsButton');
 
+rockButton.addEventListener ('click', humanSelection);
+paperButton.addEventListener ('click', humanSelection);
+scissorsButton.addEventListener ('click', humanSelection);
 
 let humanScore = parseInt(0);
 let compScore = parseInt(0);
+computerChoice = getComputerChoice();
+
+function go() {
+    if (humanChoice === 'Rock' && computerChoice === 'Paper') {
+        compScore++;
+        console.log('Computer wins!');
+    }  else if (humanChoice === 'Paper' && computerChoice === 'Scissors') {
+        compScore++;
+        console.log('Computer wins!');
+    } else if (humanChoice === 'Scissors' && computerChoice === 'Rock') {
+        compScore++;
+        console.log('Computer wins!');
+    } else if (humanChoice === 'Paper' && computerChoice === 'Rock') {
+        humanScore++;
+        console.log('Human wins!');
+    } else if (humanChoice === 'Scissors' && computerChoice === 'Paper') {
+        humanScore++;
+        console.log('Human wins!');
+    } else if (humanChoice === 'Rock' && computerChoice === 'Scissors') {
+        humanScore++;
+        console.log('Human wins!');
+    } else {
+        console.log('DRAW!');
+    }
+}
+
+const goButton = document.getElementById('goButton');
+goButton.addEventListener('click', go);
+
+
+/*
+
 const computerChoice = getComputerChoice();
 
 function playGame() {
@@ -118,12 +146,13 @@ function playGame() {
 
 }
 
-playGame();
+playGame(); 
 
 if (humanScore > compScore) {
     alert('AYY EASY DUB CHAT!'); 
 } else {
     alert('OH NAH HE LOST TO AN AI!!!');
-}
+} */
+
 
 
