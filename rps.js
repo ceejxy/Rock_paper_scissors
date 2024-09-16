@@ -1,10 +1,8 @@
-
 // create a variable that returns a random number between 1 and 3
 // the computer's choice will depend on the random number
 // if the random number is one, the output is Rock
 // else if the random number is 2, the output is Paper
 // else the output is Scissors
-//
 
 
 
@@ -26,37 +24,6 @@ function getComputerChoice() {
 
 } 
 
-console.log(getComputerChoice())
-
-
-
-// create a function named getHumanChoice
-// human's choice depends on their input
-// prompt the human to input one of the three choices
-// if their input is Rock, Paper, or Scissors
-// change the users input to all lowercase using toLowerCase method for consistency
-// return the human's choice with the first letter capitalized only
-// else alert the human that their answer is invalid
-// alert human that their answer is not valid
-
-
- /* function getHumanChoice() {
-
-    while (true) {
-        humanWeapon = prompt('Choose your fighter').toLowerCase();
-        
-        if (humanWeapon === 'rock' || humanWeapon === 'paper' || humanWeapon === 'scissors') {
-            humanWeapon = humanWeapon.charAt(0).toUpperCase() + humanWeapon.slice(1);
-            return humanWeapon;
-        } else {
-        alert('That is NOT an option!');
-    }
-}
-} */
-
-
-
-
 // create variable to keep track of human score
 // create variable to keep track of computer score
 // initialize both to 0
@@ -67,71 +34,53 @@ console.log(getComputerChoice())
 
 
 
-//console.log(playRound(humanSelection, computerSelection)); */
+function playRound(humanChoice, computerChoice) {
 
-
-
-let humanChoice = ''
-
-function humanSelection(event) {
-
-    
-    if (event.target.id === 'rockButton') {
-        humanChoice = 'Rock';
-        console.log(humanChoice);
-    } else if (event.target.id === 'paperButton') {
-        humanChoice = 'Paper';
-        console.log(humanChoice);
-    } else {
-        humanChoice = 'Scissors';
-        console.log(humanChoice);
-    }
-}
-
-const rockButton = document.getElementById('rockButton');
-const paperButton = document.getElementById('paperButton');
-const scissorsButton = document.getElementById('scissorsButton');
-
-rockButton.addEventListener ('click', humanSelection);
-paperButton.addEventListener ('click', humanSelection);
-scissorsButton.addEventListener ('click', humanSelection);
-
-let humanScore = parseInt(0);
-let compScore = parseInt(0);
-computerChoice = getComputerChoice();
-
-function go() {
     if (humanChoice === 'Rock' && computerChoice === 'Paper') {
-        compScore++;
+        //compScore++;
         console.log('Computer wins!');
     }  else if (humanChoice === 'Paper' && computerChoice === 'Scissors') {
-        compScore++;
+        //compScore++;
         console.log('Computer wins!');
     } else if (humanChoice === 'Scissors' && computerChoice === 'Rock') {
-        compScore++;
+        //compScore++;
         console.log('Computer wins!');
     } else if (humanChoice === 'Paper' && computerChoice === 'Rock') {
-        humanScore++;
+        //humanScore++;
         console.log('Human wins!');
     } else if (humanChoice === 'Scissors' && computerChoice === 'Paper') {
-        humanScore++;
+        //humanScore++
         console.log('Human wins!');
     } else if (humanChoice === 'Rock' && computerChoice === 'Scissors') {
-        humanScore++;
+        //humanScore++;
         console.log('Human wins!');
     } else {
-        console.log('DRAW!');
+        console.log('DRAW');
     }
-}
+}    
 
-const goButton = document.getElementById('goButton');
-goButton.addEventListener('click', go);
+
+const wrapper = document.getElementById('wrapper');
+
+wrapper.addEventListener('click', e => {
+    const isButton = e.target.nodeName === 'BUTTON';
+    if (!isButton) {
+        return;
+    }
+
+    humanChoice = (e.target.textContent);
+    computerChoice = getComputerChoice();
+    console.log('You chose ' + humanChoice + ' and the Computer chose ' + computerChoice);
+
+    playRound(humanChoice, computerChoice);
+})
+
+
+
+
 
 
 /*
-
-const computerChoice = getComputerChoice();
-
 function playGame() {
 
     for (let round = 0; round < 5; round++) {
@@ -146,13 +95,10 @@ function playGame() {
 
 }
 
-playGame(); 
+playGame();
 
 if (humanScore > compScore) {
     alert('AYY EASY DUB CHAT!'); 
 } else {
     alert('OH NAH HE LOST TO AN AI!!!');
 } */
-
-
-
