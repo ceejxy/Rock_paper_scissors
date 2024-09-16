@@ -9,11 +9,18 @@
 
 <body>
 
-  <button id="rockButton">Rock</button>
-  <button id="paperButton">Paper</button>
-  <button id="scissorsButton">Scissors</button>
+  <div id="wrapper">
 
-  <button id="goButton">Go!</button>
+    <button id="rockButton" class="rock btn">Rock</button>
+
+    <button id="paperButton" class="paper btn">Paper</button>
+    <button id="scissorsButton" class="scissors btn">Scissors</button>
+
+  </div>
+
+  <div id="results">Results</div>
+
+  <!-- <button id="goButton">Go!</button> -->
 
   <script src="rps.js">
 
@@ -24,3 +31,5 @@
 </body>
 
 </html>
+
+<!-- click event for any button on the document. when the user selects a button, the button they select will represent their choice. If it is rock, paper, scissors. That value will then be used for the playRound function-->
