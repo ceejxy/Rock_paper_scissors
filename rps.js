@@ -15,50 +15,67 @@ function getComputerChoice() {
         return choice;
     }
 
-} 
+}
 
 let humanScore = parseInt(0);
 let compScore = parseInt(0);
+
+function trackScore() {
+
+    if (document.getElementById('result').innerHTML = 'Computer wins!') {
+        compScore++
+        document.getElementById('compRecord').innerHTML = compScore;
+    } else if (document.getElementById('result').innerHTML = 'You win!') {
+        humanScore++
+        document.getElementById('humanRecord').innerHTML = humanScore;}
+    }
+
+
+
 
 function playRound(humanChoice, computerChoice) {
 
 
     if (humanChoice === 'Rock' && computerChoice === 'Paper') {
-        compScore++;
-       // console.log('Computer wins!');
+        //console.log('Computer wins!');
+        document.getElementById('result').innerHTML = 'Computer wins!'
+        compScore++
     }  else if (humanChoice === 'Paper' && computerChoice === 'Scissors') {
-        compScore++;
-       // console.log('Computer wins!');
+        document.getElementById('result').innerHTML = 'Computer wins!'
+        compScore++
+        //console.log('Computer wins!');
     } else if (humanChoice === 'Scissors' && computerChoice === 'Rock') {
-        compScore++;
-       // console.log('Computer wins!');
+        document.getElementById('result').innerHTML = 'Computer wins!'
+        compScore++
+        //console.log('Computer wins!');
     } else if (humanChoice === 'Paper' && computerChoice === 'Rock') {
-        humanScore++;
+        document.getElementById('result').innerHTML = 'You win!'
+        humanScore++
         //console.log('Human wins!');
     } else if (humanChoice === 'Scissors' && computerChoice === 'Paper') {
+        document.getElementById('result').innerHTML = 'You win!'
         humanScore++
         //console.log('Human wins!');
     } else if (humanChoice === 'Rock' && computerChoice === 'Scissors') {
-        humanScore++;
+        document.getElementById('result').innerHTML = 'You win!'
+        humanScore++
         //console.log('Human wins!');
     } else {
+        document.getElementById('result').innerHTML = 'DRAW!!'
         //console.log('DRAW');
     }
 
-    if (humanScore === 5) {
-        alert('You win!');
-        humanScore = 0;
-        compScore = 0;
-    } else if (compScore === 5) {
-        alert('Computer wins!');
-        compScore = 0;
-        humanScore = 0;
-    }
+    document.querySelector('#humanRecord').innerHTML = 'Your Score: ' + humanScore;
+    document.querySelector('#compRecord').innerHTML = 'Computer Score: ' + compScore;
 
 }    
 
 
-const results = document.createElement('div');
+
+
+
+
+/*const results = document.createElement('div');
 const score1 = document.createElement('div');
 const score2 = document.createElement('div');
 
@@ -67,7 +84,7 @@ results.appendChild(score1);
 score1.textContent = 'Your score:';
 
 results.appendChild(score2);
-score2.textContent = 'Computer score:';
+score2.textContent = 'Computer score:';*/
 
 
 
@@ -80,21 +97,24 @@ wrapper.addEventListener('click', e => {
         return;
     }
     
-    humanChoice = (e.target.textContent);
+    humanChoice = (e.target.innerHTML);
     computerChoice = getComputerChoice();
 
-   // console.log('You chose ' + humanChoice + ' and the Computer chose ' + computerChoice);
+   //console.log('You chose ' + humanChoice + ' and the Computer chose ' + computerChoice);
 
     playRound(humanChoice, computerChoice);
 
-    const yourScore = document.createElement('p');
-    score1.appendChild(yourScore);
-    yourScore.textContent = humanScore;
+    if (humanScore === 5) {
+        alert('You win!');
+        humanScore = 0;
+        compScore = 0;
+    } else if (compScore === 5) {
+        alert('Computer wins!');
+        compScore = 0;
+        humanScore = 0;
+    }
 
-    const puteScore = document.createElement('p');
-    score2.appendChild(puteScore);
-    puteScore.textContent = compScore;
-
+   
 });
 
 
