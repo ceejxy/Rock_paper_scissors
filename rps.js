@@ -1,122 +1,77 @@
+// create function to get computers choice 
 
-function getComputerChoice() {
-    let randomNumber = Math.floor(Math.random()* 3) + 1
-    let computerWeapon = Number(randomNumber);
-    let choice = ''
+let choices = ['Rock', 'Paper', 'Scissors'] 
 
-    if(computerWeapon === 1) {
-        choice = 'Rock';
-        return choice
-    } else if (computerWeapon === 2) {
-        choice = 'Paper';
-        return choice
+let computerChoice = () => {
+    let number = Math.floor(Math.random()* 3)
+    let compChoice;
+    if (choices[number] === 'Rock') {
+        compChoice = 'Rock'
+    } else if (choices[number] === 'Paper') {
+        compChoice = 'Paper'
     } else {
-        choice = 'Scissors';
-        return choice;
+        compChoice = 'Scissors'
     }
-
+    return compChoice;
 }
 
-let humanScore = parseInt(0);
-let compScore = parseInt(0);
+// create function for the rules of the game 
 
-function trackScore() {
+const result = document.querySelector('#result')
+let humanScore = 0;
+let compScore = 0;
 
-    if (document.getElementById('result').innerHTML = 'Computer wins!') {
+
+function playRound(humanChoice, compChoice) {
+    if (humanChoice === 'Rock' && compChoice === 'Paper') {
         compScore++
-        document.getElementById('compRecord').innerHTML = compScore;
-    } else if (document.getElementById('result').innerHTML = 'You win!') {
-        humanScore++
-        document.getElementById('humanRecord').innerHTML = humanScore;}
-    }
-
-
-
-
-function playRound(humanChoice, computerChoice) {
-
-
-    if (humanChoice === 'Rock' && computerChoice === 'Paper') {
-        //console.log('Computer wins!');
-        document.getElementById('result').innerHTML = 'Computer wins!'
+        result.innerText = 'You selected: Rock \n Computer selected: Paper \n Computer wins!';
+    } else if (humanChoice === 'Paper' && compChoice === 'Scissors') {
         compScore++
-    }  else if (humanChoice === 'Paper' && computerChoice === 'Scissors') {
-        document.getElementById('result').innerHTML = 'Computer wins!'
+        result.innerText = 'You selected: Paper \n Computer selected: Scissors \n Computer wins!';
+    } else if (humanChoice === 'Scissors' && compChoice === 'Rock') {
         compScore++
-        //console.log('Computer wins!');
-    } else if (humanChoice === 'Scissors' && computerChoice === 'Rock') {
-        document.getElementById('result').innerHTML = 'Computer wins!'
-        compScore++
-        //console.log('Computer wins!');
-    } else if (humanChoice === 'Paper' && computerChoice === 'Rock') {
-        document.getElementById('result').innerHTML = 'You win!'
+        result.innerText = 'You selected: Scissors \n Computer selected: Rock \n Computer wins!';
+    } else if (humanChoice === 'Rock' && compChoice === 'Scissors') {
         humanScore++
-        //console.log('Human wins!');
-    } else if (humanChoice === 'Scissors' && computerChoice === 'Paper') {
-        document.getElementById('result').innerHTML = 'You win!'
+        result.innerText = 'You selected: Rock \n Computer selected: Scissors \n You win!';
+    } else if (humanChoice === 'Paper' && compChoice === 'Rock') {
         humanScore++
-        //console.log('Human wins!');
-    } else if (humanChoice === 'Rock' && computerChoice === 'Scissors') {
-        document.getElementById('result').innerHTML = 'You win!'
+        result.innerText = 'You selected: Paper \n Computer selected: Rock \n You win!!';
+    } else if (humanChoice === 'Scissors' && compChoice === 'Paper') {
         humanScore++
-        //console.log('Human wins!');
+        result.innerText = 'You selected: Scissors \n Computer selected: Paper \n You win!';
     } else {
-        document.getElementById('result').innerHTML = 'DRAW!!'
-        //console.log('DRAW');
+        result.innerText = 'DRAW!'
     }
-
-    document.querySelector('#humanRecord').innerHTML = 'Your Score: ' + humanScore;
-    document.querySelector('#compRecord').innerHTML = 'Computer Score: ' + compScore;
-
-}    
+}
 
 
+// create function to get humans choice depending on which button they click and then runs the playRound function
+
+const wrapper = document.querySelector('#wrapper');
+const humanRecord = document.querySelector('#humanRecord')
+const compRecord = document.querySelector('#compRecord')
 
 
+wrapper.addEventListener('click', function(e) {
 
-
-/*const results = document.createElement('div');
-const score1 = document.createElement('div');
-const score2 = document.createElement('div');
-
-document.body.appendChild(results);
-results.appendChild(score1);
-score1.textContent = 'Your score:';
-
-results.appendChild(score2);
-score2.textContent = 'Computer score:';*/
-
-
-
-const wrapper = document.getElementById('wrapper');
-
-wrapper.addEventListener('click', e => {
-
-    const isButton = e.target.nodeName === 'BUTTON';
-    if (!isButton) {
-        return;
-    }
+    humanChoice = e.target.innerText;
+    compChoice = computerChoice();
     
-    humanChoice = (e.target.innerHTML);
-    computerChoice = getComputerChoice();
+    playRound(humanChoice, compChoice);
 
-   //console.log('You chose ' + humanChoice + ' and the Computer chose ' + computerChoice);
+    humanRecord.innerText = `Your score is: ${humanScore}`;
+    compRecord.innerText = `Computer score is: ${compScore}`;
 
-    playRound(humanChoice, computerChoice);
-
-    if (humanScore === 5) {
-        alert('You win!');
-        humanScore = 0;
-        compScore = 0;
-    } else if (compScore === 5) {
-        alert('Computer wins!');
+    if (compScore === 5) {
         compScore = 0;
         humanScore = 0;
+        alert('Game over! Computer wins!');
+    } else if (humanScore === 5) {
+        humanScore = 0;
+        compScore = 0;
+        alert('Game over! You win!')
     }
 
-   
-});
-
-
-
-
+})
