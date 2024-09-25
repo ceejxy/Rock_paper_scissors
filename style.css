@@ -1,0 +1,61 @@
+body {
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+#header {
+    text-align: center;
+    font-size: 100px
+}
+
+#wrapper {
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#result {
+    text-align: center;
+    font-size: 50px;
+}
+
+.btn {
+    border-radius: 50px;
+    display: flex;
+    height: 200px;
+    flex-basis: 20%;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#humanRecord,
+#compRecord {
+    font-size: 80px;
+}
+
+
+#reset {
+    text-align: center;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 30px;
+}
+
+#container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
