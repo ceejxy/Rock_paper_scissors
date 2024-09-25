@@ -5,14 +5,19 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+  
+  <div id="header">Choose Your Fighter!</div>
 
   <div id="wrapper">
 
-    <button id="rockButton" class="rock btn">Rock</button>
-
+    <button id="rockButton" class="rock btn">
+      <img src="">
+      Rock
+    </button>
     <button id="paperButton" class="paper btn">Paper</button>
     <button id="scissorsButton" class="scissors btn">Scissors</button>
 
@@ -20,8 +25,18 @@
 
   <div id="result"></div>
 
-  <div id="humanRecord"></div>
-  <div id="compRecord"></div>
+  <div class="container">
+    <div id="humanRecord"></div>
+    <div id="compRecord"></div>
+  </div>
+
+  <div id="finalVerdict"></div>
+
+  <div id="container2">
+    <button id="reset">Reset Score</button>
+  </div>
+
+  
 
   <script src="rps.js">
 
