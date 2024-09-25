@@ -37,7 +37,7 @@ function playRound(humanChoice, compChoice) {
         result.innerText = 'You selected: Rock \n Computer selected: Scissors \n You win!';
     } else if (humanChoice === 'Paper' && compChoice === 'Rock') {
         humanScore++
-        result.innerText = 'You selected: Paper \n Computer selected: Rock \n You win!!';
+        result.innerText = 'You selected: Paper \n Computer selected: Rock \n You win!';
     } else if (humanChoice === 'Scissors' && compChoice === 'Paper') {
         humanScore++
         result.innerText = 'You selected: Scissors \n Computer selected: Paper \n You win!';
@@ -52,6 +52,8 @@ function playRound(humanChoice, compChoice) {
 const wrapper = document.querySelector('#wrapper');
 const humanRecord = document.querySelector('#humanRecord')
 const compRecord = document.querySelector('#compRecord')
+const finalVerdict = document.createElement('div')
+const resetButton = document.querySelector('#reset')
 
 
 wrapper.addEventListener('click', function(e) {
@@ -61,17 +63,32 @@ wrapper.addEventListener('click', function(e) {
     
     playRound(humanChoice, compChoice);
 
-    humanRecord.innerText = `Your score is: ${humanScore}`;
-    compRecord.innerText = `Computer score is: ${compScore}`;
+    humanRecord.innerText = `Your score: ${humanScore}`;
+    compRecord.innerText = `Computer score: ${compScore}`;
 
     if (compScore === 5) {
         compScore = 0;
         humanScore = 0;
-        alert('Game over! Computer wins!');
+        finalVerdict.innerText = 'YOU JUST LOST TO AN AI LOLZ';
+        finalVerdict.style.color = 'red'
+        document.body.appendChild(finalVerdict)
     } else if (humanScore === 5) {
         humanScore = 0;
         compScore = 0;
-        alert('Game over! You win!')
+        finalVerdict.innerText = 'OH YEA DUB CLUB';
+        finalVerdict.style.color = 'green';
+        document.body.appendChild(finalVerdict)
     }
 
+    resetButton.addEventListener('click', () => {
+        document.body.removeChild(finalVerdict);
+        humanScore = 0;
+        compScore = 0;
+        humanRecord.innerText = `Your score: ${humanScore}`;
+        compRecord.innerText = `Computer score: ${compScore}`;
+      });
+    
 })
+
+finalVerdict.style.fontSize = '90px';
+finalVerdict.style.textAlign = 'center';
