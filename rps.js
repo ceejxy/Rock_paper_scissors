@@ -92,3 +92,5 @@ wrapper.addEventListener('click', function(e) {
 
 finalVerdict.style.fontSize = '90px';
 finalVerdict.style.textAlign = 'center';
+
+
